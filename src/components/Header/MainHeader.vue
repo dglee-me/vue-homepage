@@ -3,13 +3,13 @@
         <div class="header-wrap">
             <div class="header_left">
                 <div class="logo">
-                    <a href="/">개발노트</a>
+                    <router-link to="/">개발노트</router-link>
                 </div>
             </div>
             <div class="header_center">
                 <nav class="header_center-menu">
-                    <a class="header_center-menu_item" :href="community" >커뮤니티</a>
-                    <a class="header_center-menu_item" :href="board" >게시판</a>
+                    <router-link to="/community" class="header_center-menu_item">커뮤니티</router-link>
+                    <a href="/board" class="header_center-menu_item">기록</a>
                 </nav>
             </div>
             <div class="header_right">
@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="header_right-login">
-                    <a class="header_right-login_item" :href="login">로그인</a>
-                    <a class="header_right-login_item" :href="join">회원가입</a>
+                    <button class="header_right-login_item" @click="login">로그인</button>
+                    <button class="header_right-login_item" @click="join">회원가입</button>
                 </div>
             </div>
         </div>
@@ -29,18 +29,11 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return {
-                login : "/login",
-                join : "/join",
-                community : "/community",
-                board : "/board"
-            }
-        }
-    };
+    export default{
+        
+    }
 </script>
 
 <style scoped>
-  @import "./MainHeader.css";
+    @import "./MainHeader.css";
 </style>
