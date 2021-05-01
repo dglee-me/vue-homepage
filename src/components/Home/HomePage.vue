@@ -1,11 +1,16 @@
 <template>
     <div class="home-page">
-        <router-view></router-view>
+        <article-component header-content="커뮤니티"></article-component>
+        <article-component header-content="기록"></article-component>
     </div>
 </template>
 
 <script>
-</script>
+    import ArticleComponent from "../Article/ArticleComponent";
 
-<style>
-</style>
+    export default {
+        components: {
+            "article-component" : ArticleComponent
+        }
+    }
+</script>

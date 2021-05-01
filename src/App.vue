@@ -1,7 +1,9 @@
 <template>
     <div class="app">
         <main-header></main-header>
-        <home-page></home-page>
+        <router-view>
+            <home-page></home-page>
+        </router-view>
     </div>
 </template>
 
@@ -17,7 +19,3 @@
         }
     };
 </script>
-
-<style>
-    @import "./assets/css/App.css";
-</style>

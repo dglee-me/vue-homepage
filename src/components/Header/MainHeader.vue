@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="app-header">
         <div class="header-wrap">
             <div class="header_left">
                 <div class="logo">
@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="header_right-login">
-                    <button class="header_right-login_item" @click="login">로그인</button>
-                    <button class="header_right-login_item" @click="join">회원가입</button>
+                    <a class="header_right-login_item">로그인</a>
+                    <a class="header_right-login_item">회원가입</a>
                 </div>
             </div>
         </div>
