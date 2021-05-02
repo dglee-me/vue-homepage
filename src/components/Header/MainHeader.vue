@@ -24,13 +24,26 @@
                     <a class="header_right-login_item">회원가입</a>
                 </div>
             </div>
+            <div class="header_right-mobile" @click="spreadMenu();">
+                <div class="mobile nav-icon">
+                    <div class="line"></div>
+                </div>
+            </div>
         </div>
     </header>
 </template>
 
 <script>
-    export default{
-        
+    export default {
+        methods: {
+            
+            // 햄버거 버튼을 눌렀을 때, 사용자에게 메뉴 리스트를 보여준다.
+            spreadMenu() {
+
+                // 햄버거 버튼을 눌렀을 때, 임시로 alert을 띄운다.
+                alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
+            }
+        }
     }
 </script>
 

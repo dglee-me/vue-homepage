@@ -59,6 +59,7 @@
     font-weight: bold;
     font-size: 0;
     border-radius: 6px;
+    user-select: none
 }
 
 .home-section_board li a:hover, .home-section_board li a:active, .home-section_board li a:focus {
