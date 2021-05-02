@@ -4,8 +4,36 @@
             <h2 class="home-section_header-content">{{headerContent}}</h2>
         </header>
         <ul class="home-section_board">
-            <li>게시글1</li>
-            <li>게시글2</li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="icon icon-announcement"></span>
+                    <span class="title text-body">[Category] 게시글1 입니다.</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="icon icon-announcement"></span>
+                    <span class="title text-body">[Category] 게시글2 입니다.</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="icon icon-announcement"></span>
+                    <span class="title text-body">[Category] 게시글3 입니다.</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="icon icon-announcement"></span>
+                    <span class="title text-body">[Category] 게시글4 입니다.</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">
+                    <span class="icon icon-announcement"></span>
+                    <span class="title text-body">[Category] 게시글5 입니다.</span>
+                </a>
+            </li>
         </ul>
     </section>
 </template>
