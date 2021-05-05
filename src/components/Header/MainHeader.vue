@@ -9,7 +9,7 @@
             <div class="header_center">
                 <nav class="header_center-menu">
                     <router-link to="/community" class="header_center-menu_item">커뮤니티</router-link>
-                    <a href="/board" class="header_center-menu_item">기록</a>
+                    <router-link to="/board" class="header_center-menu_item">기록</router-link>
                 </nav>
             </div>
             <div class="header_right">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="header_right-login">
                     <a class="header_right-login_item">로그인</a>
-                    <a class="header_right-login_item">회원가입</a>
+                    <router-link to="/user/new" class="header_right-login_item">회원가입</router-link>
                 </div>
             </div>
             <div class="header_right-mobile" @click="spreadMenu();">

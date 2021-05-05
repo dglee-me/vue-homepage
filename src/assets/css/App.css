@@ -27,6 +27,10 @@ ol, ul {
     margin:0px; padding:0px;
 }
 
+select {
+    outline: none;
+}
+
 .ir {
     position: relative;
     z-index: -1;
