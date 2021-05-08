@@ -103,6 +103,31 @@
     opacity: .6s;
 }
 
+.user-sign-up_form__group__error {
+    margin: 10px 0;
+    font-size: 13px;
+    line-height: 21px;
+    color: #f77;
+}
+
+.user-sign-up_form__group.error .user-sign-up_form__group__label {
+    color: #f77;
+}
+
+.form-control.error {
+    border-color: #f77;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(79 192 141 / 50%);
+}
+
+.form-control.error:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(255 119 119 / 50%);
+}
+
 @media(min-width: 768px) {
     @media screen {
         .form-wrap {

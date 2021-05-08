@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="header_right-login">
-                    <a class="header_right-login_item">로그인</a>
+                    <router-link to="/user/login" class="header_right-login_item">로그인</router-link>
                     <router-link to="/user/new" class="header_right-login_item">회원가입</router-link>
                 </div>
             </div>

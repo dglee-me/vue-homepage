@@ -5,7 +5,7 @@ import Home from "../components/Home/HomePage";
 import NotFoundComponent from "../components/Error/PageNotFound";
 import Community from "../pages/Community/CommunityPage";
 
-import Join from "../pages/User/JoinPage";
+import Join from "../pages/User/Join/JoinPage";
 
 Vue.use(VueRouter);
 
