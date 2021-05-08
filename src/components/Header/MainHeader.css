@@ -22,6 +22,7 @@ header.app-header {
 .header-wrap .header_left .logo a {
     font-size: 28px;
     font-weight: 700;
+    color:#4fc08d;
 }
 
 .header_center {

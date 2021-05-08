@@ -1,3 +1,8 @@
+.user-sign-up__header {
+    text-align: center;
+    color: #4fc08d;
+}
+
 .user-sign-up {
     padding:60px 0 60px 0;
 }
@@ -126,6 +131,20 @@
 .form-control.error:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgb(255 119 119 / 50%);
+}
+
+.user-sign-up_form__login {
+    color: #424242;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.user-sign-up_form__login__link {
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: underline;
+    padding-left: 10px;
 }
 
 @media(min-width: 768px) {

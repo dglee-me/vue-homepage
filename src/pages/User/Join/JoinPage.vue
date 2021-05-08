@@ -1,6 +1,8 @@
 <template>
     <div class="page">
-        <main-header></main-header>
+        <header class="user-sign-up__header">
+            <h1><router-link to="/">개발일기</router-link></h1>
+        </header>
         <section class="container user-sign-up">
             <div class="user-sign-up_header">
                 <h1>회원가입</h1>
@@ -53,6 +55,7 @@
                     </div>
                     <button class="user-sign-up_form__submit" type="submit">회원가입</button>
                 </form>
+                <p class="user-sign-up_form__login">이미 아이디가 있으신가요?<router-link to="/user/login" class="user-sign-up_form__login__link">로그인</router-link></p>
             </div>
         </section>
     </div>
@@ -113,7 +116,6 @@
                 this.pwConfirmError = false;
             },
             nickName: function(nickName) {
-
                 if(nickName.length < 2 || nickName.length > 15) {
                     this.nickNameError = true;
 
@@ -143,13 +145,7 @@
                     return false;
                 }
 
-                if(!pwRule.test(this.pw)) {
-                    alert("비밀번호를 다시 입력해주세요.");
-
-                    return false;
-                }
-
-                if(this.pw !== this.pwConfirm) {
+                if(!pwRule.test(this.pw) || this.pw !== this.pwConfirm) {
                     alert("비밀번호를 다시 입력해주세요.");
 
                     return false;
@@ -163,14 +159,14 @@
                 }
 
                 // Change Data Format to JSON
-                const parseData = JSON.parse(JSON.stringify(this.$data));
+                const formData = JSON.parse(JSON.stringify(this.$data));
 
                 // Unnecessary Field Remove
-                delete parseData.domainList;
-                delete parseData.domainValue;
-                delete parseData.pwError;
-                delete parseData.pwConfirmError;
-                delete parseData.nickNameError;
+                delete formData.domainList;
+                delete formData.domainValue;
+                delete formData.pwError;
+                delete formData.pwConfirmError;
+                delete formData.nickNameError;
 
                 alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
             }
