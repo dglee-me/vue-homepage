@@ -1,17 +1,26 @@
 <template>
-    <select class="form-control"
-        v-on:chang="$emit('select-change', $event.target.value)"
+    <select 
+        class="form-control"
+        v-on:change="updateValue($event.target.value)"
     >
         <option value selected="" disabled="">선택하지않음</option>
         <option v-for="(item, index) in items" :key="index" :value="item">{{item}}</option>
-        <option v-if="manual == 'true'" value="_manual">직접입력</option>
+        <option v-if="manual == true" value="_manual">직접입력</option>
     </select>
 </template>
 
 <script>
    export default {
        name: "SelectBox",
-       props: ["model", "items", "manual"],
-       event: "select-change"
+       props: {
+           value: String,
+           items: Array,
+           manual: Boolean
+       },
+       methods: {
+           updateValue: function (value) {
+                this.$emit('change', value);
+            }
+       }
    };
 </script>

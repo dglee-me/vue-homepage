@@ -1,6 +1,9 @@
+.user-sign-up {
+    padding:60px 0 60px 0;
+}
+
 .form-wrap {
     margin: 0 auto;
-    padding-bottom: 60px;
 }
 
 .user-sign-up_form__group {
@@ -34,7 +37,8 @@
     flex: 1 0 auto;
 }
 
-.email-input__local-part, email-input__domain-part {
+.email-input__local-part, .email-input__domain-part {
+    position: relative;
     -webkit-flex: 1 1 0px;
     flex: 1 1 0px;
 }
@@ -44,10 +48,6 @@
     text-align: center;
     line-height: 40px;
     color: #ededed;
-}
-
-.email-input__local-part > .fomr-control {
-    width: 100%;
 }
 
 .user-sign-up_form__group__input .form-control {
@@ -84,6 +84,23 @@
     background-color: #4fc08d;
     border: none;
     border-radius: 4px;
+}
+
+.email-input__domain-part_expand {
+    position: absolute;
+    top: 10px;
+    right: -8px;
+    padding: 5px;
+    background: none;
+    border: none;
+    font-size: 0;
+    cursor: default;
+    color: rgba(0,0,0.3);
+}
+
+.email-input__domain__expand.active:active, .email-input__domain__expand.active:focus,
+.email-input__domain__expand.active:hover {
+    opacity: .6s;
 }
 
 @media(min-width: 768px) {

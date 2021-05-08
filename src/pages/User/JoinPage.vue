@@ -10,15 +10,19 @@
                     <div class="user-sign-up_form__group__input">
                         <div class="email-input">
                             <span class="email-input__local-part">
-                                <input type="text" v-model="localPart" class="form-control" placeholder="이메일">
+                                <input type="text" v-model="localPart" size="1" class="form-control email" placeholder="이메일" @change="emailValidation">
                             </span>
                             <span class="email-input__separator">@</span>
                             <span class="email-input__domain-part">
                                 <select-box
-                                    v-model="this.domainPart"
+                                    v-if="domainPart != '_manual'"
+                                    v-model="domainPart"
                                     :items="this.domainList"
-                                    manual="true"
+                                    :manual="true"
+                                    @change="value => { domainPart = value }"
                                 ></select-box>
+                                <input v-else class="form-control" size="1" placeholder="입력해주세요">
+                                <cancel-button v-if="domainPart == '_manual'" value="email-input__domain-part_expand"></cancel-button>
                             </span>
                         </div>
                     </div>
@@ -51,11 +55,13 @@
 
 <script>
     import SelectBox from "../../components/Common/SelectBox";
+    import CancelButton from "../../components/Common/CancelButton";
 
     export default {
         name: "JoinPage",
         components: {
-            "select-box": SelectBox
+            "select-box": SelectBox,
+            "cancel-button": CancelButton
         },
         data: () => {
             return {
@@ -73,11 +79,13 @@
                 e.preventDefault();
 
                 /* User-Sign-Up Form Initialize */
-                const form = document.forms[0];
-
                 const emailId = this.localPart + "@" + this.domainPart;
+                
+                alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
+            },
 
-                console.log(this.domainPart);
+            emailValidation(e) {
+                const data = e.target.value;
             }
         }
     };
