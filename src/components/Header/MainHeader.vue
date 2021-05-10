@@ -24,24 +24,39 @@
                     <router-link to="/user/new" class="header_right-login_item">회원가입</router-link>
                 </div>
             </div>
-            <div class="header_right-mobile" @click="spreadMenu();">
+            <div class="header_right-mobile" @click="spreadMenu">
                 <div class="mobile nav-icon">
                     <div class="line"></div>
                 </div>
             </div>
+            <spread-menu v-if="isSpreadMenuOpen" @click="spreadMenu"></spread-menu>
         </div>
     </header>
 </template>
 
 <script>
+    import SpreadMenu from "../Mobile/SpreadMenu";
+
     export default {
+        data: () => {
+            return {
+                isSpreadMenuOpen: false
+            }
+        },
+        components: {
+            "spread-menu" : SpreadMenu
+        },
         methods: {
             
             // 햄버거 버튼을 눌렀을 때, 사용자에게 메뉴 리스트를 보여준다.
             spreadMenu() {
+                this.isSpreadMenuOpen = this.isSpreadMenuOpen == true ? false : true;
 
-                // 햄버거 버튼을 눌렀을 때, 임시로 alert을 띄운다.
-                alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
+                if(this.isSpreadMenuOpen) {
+                    document.body.classList.add("fixed");
+                }else {
+                    document.body.classList.remove("fixed");
+                }
             }
         }
     }

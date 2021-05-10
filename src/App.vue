@@ -52,6 +52,10 @@
         flex-direction: column;
     }
 
+    .fixed {
+        overflow-y: hidden;
+    }
+
     .home-page {
         display: flex;
         flex: 1 0 auto;
@@ -59,6 +63,12 @@
         width: 1136px;
         margin: 0 auto;
         min-height: 1px;
+    }
+
+    .board-icon {
+        background-image: url("/src/assets/image/board/save.png");
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     @media(min-width:768px) {
