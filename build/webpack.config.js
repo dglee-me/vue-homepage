@@ -10,7 +10,10 @@ module.exports = {
         historyApiFallback: true
     },
     resolve: {
-        extensions: [".js", ".vue"]
+        extensions: [".js", ".vue"],
+        alias: {
+            "@": path.resolve(__dirname, "../src/")
+        }
     },
     entry: {
         app: "./src/main.js"

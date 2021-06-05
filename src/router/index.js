@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../components/Home/HomePage";
-import NotFoundComponent from "../components/Error/PageNotFound";
-import Community from "../pages/Community/CommunityPage";
+import Home from "@/components/Home/HomePage";
+import NotFoundComponent from "@/components/Error/PageNotFound";
+import Community from "@/pages/Community/CommunityPage";
 
 /* User */
-import Join from "../pages/User/Join/JoinPage";
-import Login from "../pages/User/Login/LoginPage";
+import Join from "@/pages/User/Join/JoinPage";
+import Login from "@/pages/User/Login/LoginPage";
 
 Vue.use(VueRouter);
 

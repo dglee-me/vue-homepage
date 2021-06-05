@@ -35,7 +35,7 @@
 </template>
 
 <script>
-    import SpreadMenu from "../Mobile/SpreadMenu";
+    import SpreadMenu from "@/components/Mobile/SpreadMenu";
 
     export default {
         data: () => {
