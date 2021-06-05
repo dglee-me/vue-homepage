@@ -9,6 +9,9 @@ import Community from "@/pages/Community/CommunityPage";
 import Join from "@/pages/User/Join/JoinPage";
 import Login from "@/pages/User/Login/LoginPage";
 
+/* Article View */
+import Article from "../pages/Community/View/ArticleView";
+
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -18,6 +21,7 @@ export default new VueRouter({
         { path: "/community", name: "Community", component: Community },
         { path: "/user/login", name: "Login", component: Login },
         { path: "/user/new", name: "Join", component: Join },
+        { path: "/article", name: "Article", component: Article},
         { path: "*", name: "NotFoundComponent", component: NotFoundComponent }
     ]
 });
