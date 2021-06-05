@@ -52,6 +52,11 @@
         flex-direction: column;
     }
 
+    .page {
+        width: 100%;
+        height: 100%;
+    }
+
     .fixed {
         overflow-y: hidden;
     }
@@ -69,6 +74,14 @@
         background-image: url("/src/assets/image/board/save.png");
         background-size: cover;
         background-repeat: no-repeat;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .text-gray {
+        color: #757575;
     }
 
     @media(min-width:768px) {

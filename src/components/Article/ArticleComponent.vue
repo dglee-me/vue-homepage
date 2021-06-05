@@ -1,7 +1,7 @@
 <template>
     <section class="container home-section">
         <header class="home-section_header">
-            <h2 class="home-section_header-content">{{headerContent}}</h2>
+            <router-link :to="boardLink" class="home-section_header-content">{{headerContent}}</router-link>
         </header>
         <ul class="home-section_board">
             <li>
@@ -40,7 +40,7 @@
 
 <script>
     export default{
-        props: ["headerContent"]
+        props: ["headerContent", "boardLink"]
     }
 </script>
 
