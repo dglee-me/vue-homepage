@@ -9,8 +9,8 @@
 </template>
 
 <script>
-    import MainHeader from "../Header/MainHeader";
-    import ArticleComponent from "../Article/ArticleComponent";
+    import MainHeader from "@/components/Header/MainHeader";
+    import ArticleComponent from "@/components/Article/ArticleComponent";
 
     export default {
         components: {

@@ -46,12 +46,12 @@
                         </div>
                         <div v-if="pwConfirmError" class="user-sign-up_form__group__error">비밀번호가 일치하지 않습니다.</div>
                     </div>
-                    <div class="user-sign-up_form__group" :class="{'error': nickNameError}">
+                    <div class="user-sign-up_form__group" :class="{'error': userNameError}">
                         <div class="user-sign-up_form__group__label">별명</div>
                         <div class="user-sign-up_form__group__input">
-                            <input type="text" v-model="nickName" class="form-control" placeholder="별명 (2~15자)">
+                            <input type="text" v-model="userName" class="form-control" placeholder="별명 (2~15자)">
                         </div>
-                        <div v-if="nickNameError" class="user-sign-up_form__group__error">2자 이상 입력해주세요.</div>
+                        <div v-if="userNameError" class="user-sign-up_form__group__error">2자 이상 입력해주세요.</div>
                     </div>
                     <button class="user-sign-up_form__submit" type="submit">회원가입</button>
                 </form>
@@ -62,9 +62,11 @@
 </template>
 
 <script>
-    import SelectBox from "../../../components/Common/SelectBox";
-    import CancelButton from "../../../components/Common/CancelButton";
-    import MainHeader from '../../../components/Header/MainHeader';
+    import { registUser } from "@/api/index";
+
+    import SelectBox from "@/components/Common/SelectBox";
+    import CancelButton from "@/components/Common/CancelButton";
+    import MainHeader from "@/components/Header/MainHeader";
 
     // 이메일 정규표현식
     const emailRule = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/;
@@ -87,11 +89,11 @@
                 domainValue: null,
                 pw: null,
                 pwConfirm: null,
-                nickName: null,
+                userName: null,
                 policyCheck: false,
                 pwError: false,
                 pwConfirmError: false,
-                nickNameError: false
+                userNameError: false
             }
         },
         watch: {
@@ -115,14 +117,14 @@
 
                 this.pwConfirmError = false;
             },
-            nickName: function(nickName) {
-                if(nickName.length < 2 || nickName.length > 15) {
-                    this.nickNameError = true;
+            userName: function(userName) {
+                if(userName.length < 2 || userName.length > 15) {
+                    this.userNameError = true;
 
                     return;
                 }
 
-                this.nickNameError = false;
+                this.userNameError = false;
             }
         },
         methods: {
@@ -151,8 +153,8 @@
                     return false;
                 }
 
-                const nickName = this.nickName;
-                if(nickName.length < 2) {
+                const userName = this.userName;
+                if(userName.length < 2) {
                     alert("별명을 2글자 이상 작성해주세요.");
 
                     return false;
@@ -166,10 +168,25 @@
                 delete formData.domainValue;
                 delete formData.pwError;
                 delete formData.pwConfirmError;
-                delete formData.nickNameError;
+                delete formData.userNameError;
 
-                alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
-            }
+                const result = registUser(formData);
+
+                console.log(result);
+            }/*,
+            regist(data) {
+                
+                this.$http.post(`/api/user/add`, {
+                    localPart : data.localPart,
+                    domainPart : data.domainPart,
+                    pw : data.pw,
+                    userName : data.userName
+                }).then(res => {
+                    console.log(res);
+                }).catch(res => {
+                    console.log(res);
+                });
+            }*/
         }
     };
 </script>
