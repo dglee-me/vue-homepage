@@ -80,6 +80,10 @@
         font-weight: bold;
     }
 
+    .text-gray {
+        color: #757575;
+    }
+
     @media(min-width:768px) {
         @media screen {
             html, body{

@@ -1,10 +1,15 @@
 <template>
-    <div class="page community">
+    <div class="page">
         <main-header></main-header>
-        <section class="article-list">
-            <h1>커뮤니티</h1>
-            <community-article data-id="1"></community-article>
-        </section>
+        <div class="community">
+            <section class="article-header">
+                <h1>커뮤니티</h1>
+            </section>
+            <section class="article-list">
+                <community-article data-id="1"></community-article>
+                <community-article data-id="2"></community-article>
+            </section>
+        </div>
     </div>
 </template>
     
@@ -22,13 +27,35 @@
     };
 </script>
 
-<style scoped>
-    .community .article-list{
+<style>
+    .community {
+        max-width: 942px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .article-list {
-        max-width: 942px;
+    .article-header {
+        display: flex;
+        padding: 20px 0;
+    }
+
+    .article-header h1 {
+        font-size: 22px;
+    }
+    
+    .article-item__link:first-child > .article-item {
+        border-top: none;
+    }
+
+    .article-item__link:last-child > .article-item {
+        border-bottom: 1px solid #ededed;
+    }
+
+    @media(min-width: 768px) {
+        @media screen {
+            .article-header h1 {
+                font-size: 32px;
+            }
+        }
     }
 </style>>
