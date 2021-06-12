@@ -16,4 +16,10 @@ function registUser(data) {
     return axiosService.post(`/user/add`, data);
 }
 
+function verifyUser(token) {
+    return axiosService.get(`/user/verify?token=` + token);
+}
+
 export { registUser };
+
+export { verifyUser };
