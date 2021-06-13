@@ -172,7 +172,19 @@
 
                 const result = registUser(formData);
 
-                console.log(result);
+                result.then((response) => {
+                    if(response.data === 1) {
+                        alert(`회원가입이 완료되었습니다.
+                        `);
+
+                        this.$router.push({path: `/`});
+                    }
+                })
+                .catch((error) => {
+                    console.log("Error : " + error);
+
+                    this.$router.push({path: `/error`});
+                })
             }/*,
             regist(data) {
                 
