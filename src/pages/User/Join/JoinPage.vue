@@ -53,11 +53,16 @@
                         </div>
                         <div v-if="userNameError" class="user-sign-up_form__group__error">2자 이상 입력해주세요.</div>
                     </div>
+                    <div class="user-sign-up_form__policy">
+                        <input type="checkbox" id="policy-check" v-model="policyCheck">
+                        <label for="policy-check"><span @click="viewPolicy">개인정보이용정책</span>에 동의합니다.</label>
+                    </div>
                     <button class="user-sign-up_form__submit" type="submit">회원가입</button>
                 </form>
                 <p class="user-sign-up_form__login">이미 아이디가 있으신가요?<router-link to="/user/login" class="user-sign-up_form__login__link">로그인</router-link></p>
             </div>
         </section>
+        <policy-box v-if="policyView == true" @change="value => { policyView = value }"></policy-box>
     </div>
 </template>
 
@@ -67,6 +72,8 @@
     import SelectBox from "@/components/Common/SelectBox";
     import CancelButton from "@/components/Common/CancelButton";
     import MainHeader from "@/components/Header/MainHeader";
+
+    import PolicyBox from "@/pages/User/Join/Policy/PolicyBox";
 
     // 이메일 정규표현식
     const emailRule = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/;
@@ -79,7 +86,8 @@
         components: {
             "select-box": SelectBox,
             "cancel-button": CancelButton,
-            "main-header": MainHeader
+            "main-header": MainHeader,
+            "policy-box": PolicyBox
         },
         data: () => {
             return {
@@ -91,6 +99,7 @@
                 pwConfirm: null,
                 userName: null,
                 policyCheck: false,
+                policyView: false,
                 pwError: false,
                 pwConfirmError: false,
                 userNameError: false
@@ -125,9 +134,21 @@
                 }
 
                 this.userNameError = false;
+            },
+            policyView: function(policyView) {
+
+                if(!policyView) {
+                    document.body.removeAttribute("style");
+                }
             }
         },
         methods: {
+            viewPolicy(e) {
+                e.preventDefault();
+
+                this.policyView = true;
+                document.body.style.overflowY = "hidden";
+            },
             submitForm(e) {
                 e.preventDefault();
 
@@ -170,14 +191,25 @@
                 delete formData.pwConfirmError;
                 delete formData.userNameError;
 
+                if (this.policyCheck === false) {
+                    alert("개인정보이용정책에 동의해주세요.");
+
+                    return false;
+                }
+
                 const result = registUser(formData);
 
                 result.then((response) => {
                     if(response.data === 1) {
                         alert(`회원가입이 완료되었습니다.
-                        `);
+                        등록한 이메일로 인증을 완료 후 사용 가능합니다.`);
 
                         this.$router.push({path: `/`});
+                    }else if (response.data === 2) {
+                        alert(`이미 가입된 회원입니다.`);
+                    }else {
+                        alert(`회원가입에 실패하였습니다.
+                        다시 시도해주세요.`);
                     }
                 })
                 .catch((error) => {
@@ -185,20 +217,7 @@
 
                     this.$router.push({path: `/error`});
                 })
-            }/*,
-            regist(data) {
-                
-                this.$http.post(`/api/user/add`, {
-                    localPart : data.localPart,
-                    domainPart : data.domainPart,
-                    pw : data.pw,
-                    userName : data.userName
-                }).then(res => {
-                    console.log(res);
-                }).catch(res => {
-                    console.log(res);
-                });
-            }*/
+            }
         }
     };
 </script>

@@ -147,6 +147,16 @@
     padding-left: 10px;
 }
 
+.user-sign-up_form__policy {
+    margin-bottom: 20px;
+}
+
+.user-sign-up_form__policy label span {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @media(min-width: 768px) {
     @media screen {
         .form-wrap {
