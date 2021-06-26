@@ -24,6 +24,8 @@
 
 <script>
 
+    import { login } from "@/api/index";
+
     // 이메일 정규표현식
     const emailRule = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/;
 
@@ -80,7 +82,14 @@
                 delete formData.emailError;
                 delete formData.pwError;
 
-                alert("( つ’-’)╮—̳͟͞͞ ㅋㅋ\n아직안만들었지롱~");
+                const result = login(formData);
+
+                result.then((response) => {
+                    console.log(response);
+                })
+                .catch((response) => {
+                    console.log(response);
+                })
             }
         }
     };
