@@ -2,13 +2,13 @@
     <main class="login-page">
         <section class="login-page_section__form">
             <router-link to="/">
-                <h1>개발일기</h1>
+                <h1>{{this.$store.state.common.logo}}</h1>
             </router-link>
             <form class="login-page_section__form_content" @submit="submitForm">
-                <span class="login-page_section__form_content_span" :class="{'error': emailError}">
-                    <input type="email" v-model="email" size="1" class="form-control" :class="{'error': emailError}" placeholder="이메일">
+                <span class="login-page_section__form_content_span" :class="{'error': emailIdError}">
+                    <input type="email" v-model="emailId" size="1" class="form-control" :class="{'error': emailIdError}" placeholder="이메일">
                 </span>
-                <div v-if="emailError" class="login-page_section__form_content__error">이메일 형식에 맞춰 입력해주세요.</div>
+                <div v-if="emailIdError" class="login-page_section__form_content__error">이메일 형식에 맞춰 입력해주세요.</div>
                 <span class="login-page_section__form_content_span" :class="{'error': pwError}">
                     <input type="password" v-model="pw" class="form-control" placeholder="비밀번호">
                 </span>
@@ -38,21 +38,21 @@
         name: "LoginPage",
         data: () => {
             return {
-                email: null,
+                emailId: null,
                 pw: null,
-                emailError: false,
+                emailIdError: false,
                 pwError: false
             };
         },
         watch: {
-            email: function(email) {
-                if(!emailRule.test(email)) {
-                    this.emailError = true;
+            email: function(emailId) {
+                if(!emailRule.test(emailId)) {
+                    this.emailIdError = true;
 
                     return false;
                 }
 
-                this.emailError = false;
+                this.emailIdError = false;
             },
             pw: function(pw) {
                 if(!pwRule.test(pw)) {
@@ -69,7 +69,7 @@
                 e.preventDefault();
 
                 // 유효성 검사에서 실패했을 떄
-                if(this.emailError === true || this.pwError === true) {
+                if(this.emailIdError === true || this.pwError === true) {
                     alert("이메일 주소 혹은 비밀번호가 틀렸습니다.");
 
                     return false;
@@ -79,13 +79,21 @@
                 const formData = JSON.parse(JSON.stringify(this.$data));
 
                 // Unnecessary Field Remove
-                delete formData.emailError;
+                delete formData.emailIdError;
                 delete formData.pwError;
 
                 const result = login(formData);
 
                 result.then((response) => {
-                    console.log(response);
+
+                    if (response.data.result) {
+
+                        this.$store.commit("login", response.data);
+
+                        this.$router.push({path: `/`});
+                    } else {
+                        alert(`아이디 및 비밀번호를 다시 확인해주세요.`);
+                    }
                 })
                 .catch((response) => {
                     console.log(response);

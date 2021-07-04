@@ -3,7 +3,7 @@
         <div class="header-wrap">
             <div class="header_left">
                 <div class="logo">
-                    <router-link to="/">개발노트</router-link>
+                    <router-link to="/">{{this.$store.state.common.logo}}</router-link>
                 </div>
             </div>
             <div class="header_center">
@@ -19,7 +19,11 @@
                         <svg class="header_right-search_box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" preserveAspectRatio="xMidYMid meet"><path d="M22 22l-5-5"></path><circle cx="11" cy="11" r="8"></circle></svg>
                     </div>
                 </div>
-                <div class="header_right-login">
+                <div v-if="isUserLogin" class="header_right-login">
+                    <router-link to="/" class="header_right-login_item logged-in">{{this.$store.state.login.userName}}</router-link>님, 좋은하루되세요.
+                    <span class="header_right-login_item logged-out" @click="logout">로그아웃</span>
+                </div>
+                <div v-else class="header_right-login">
                     <router-link to="/user/login" class="header_right-login_item">로그인</router-link>
                     <router-link to="/user/new" class="header_right-login_item">회원가입</router-link>
                 </div>
@@ -46,6 +50,11 @@
         components: {
             "spread-menu" : SpreadMenu
         },
+        computed: {
+            isUserLogin() {
+                return this.$store.getters.isLogin;
+            }
+        },
         methods: {
             
             // 햄버거 버튼을 눌렀을 때, 사용자에게 메뉴 리스트를 보여준다.
@@ -57,6 +66,11 @@
                 }else {
                     document.body.classList.remove("fixed");
                 }
+            },
+            logout() {
+                this.$store.commit("logout");
+
+                this.$router.push({path: `/`});
             }
         }
     }

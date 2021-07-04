@@ -3,7 +3,7 @@
         <div class="modal-page" @click="closeMenuEvent">
             <article class="modal-page__article">
                 <header class="layout-nav-wrap__header">
-                    <router-link to="/" @click.native="closeMenuEvent">개발일기</router-link>
+                    <router-link to="/" @click.native="closeMenuEvent">{{this.$store.state.logo}}</router-link>
                 </header>
                 <div class="layout-nav-wrap-user__login">
                     <router-link to="/user/login" class="button button-color-green-inverted">로그인</router-link>
