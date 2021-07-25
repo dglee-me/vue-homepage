@@ -68,6 +68,17 @@
     margin:0 5px;
 }
 
+.layout-nav-wrap-user__login.logged-out > .logged-in_user {
+    color: #4fc08d;
+    font-weight: 700;
+}
+
+.layout-nav-wrap-user__login.logged-out > span{
+    position: absolute;
+    right: 15px;
+    font-weight: 700;
+}
+
 .button {
     display: inline-block;
     font-weight: 700;

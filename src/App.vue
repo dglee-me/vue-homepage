@@ -116,6 +116,7 @@
         @media screen {
             .home-page {
                 max-width: 100%;
+                margin-top: 20px;
             }
         }
     }

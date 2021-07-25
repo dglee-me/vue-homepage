@@ -5,7 +5,11 @@
                 <header class="layout-nav-wrap__header">
                     <router-link to="/" @click.native="closeMenuEvent">{{this.$store.state.logo}}</router-link>
                 </header>
-                <div class="layout-nav-wrap-user__login">
+                <div v-if="isUserLogin" class="layout-nav-wrap-user__login logged-out">
+                    <router-link to="/user/modify" class="logged-in_user">{{this.$store.state.login.userName}}</router-link>님, 안녕하세요.
+                    <span class="header_right-login_item logged-out" @click="logout">로그아웃</span>
+                </div>
+                <div v-else class="layout-nav-wrap-user__login">
                     <router-link to="/user/login" class="button button-color-green-inverted">로그인</router-link>
                     <router-link to="/user/new" class="button button-color-green">회원가입</router-link>
                 </div>
@@ -29,11 +33,21 @@
         components: {
             "menu-list": MenuList 
         },
+        computed: {
+            isUserLogin() {
+                return this.$store.getters.isLogin;
+            }
+        },
         methods: {
             closeMenuEvent(e) {
                 if (e.target.className === "modal-page" || e.target.href === window.location.origin + "/") {
                     this.$emit("click");
                 }
+            },
+            logout() {
+                this.$store.commit("logout");
+
+                this.$router.push({path: `/`});
             }
         }
     };
