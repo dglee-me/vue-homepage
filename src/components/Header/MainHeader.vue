@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div v-if="isUserLogin" class="header_right-login">
-                    <router-link to="/" class="header_right-login_item logged-in">{{this.$store.state.login.userName}}</router-link>님, 좋은하루되세요.
+                    <router-link to="/user/modify" class="header_right-login_item logged-in">{{this.$store.state.login.userName}}</router-link>님, 좋은하루되세요.
                     <span class="header_right-login_item logged-out" @click="logout">로그아웃</span>
                 </div>
                 <div v-else class="header_right-login">

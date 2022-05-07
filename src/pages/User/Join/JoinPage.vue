@@ -92,6 +92,7 @@
         data: () => {
             return {
                 domainList: ["naver.com", "gmail.com", "hotmail.com"],
+                emailId: null,
                 localPart: null,
                 domainPart: null,
                 domainValue: null,
@@ -168,6 +169,8 @@
                     return false;
                 }
 
+                this.emailId = emailId;
+
                 if(!pwRule.test(this.pw) || this.pw !== this.pwConfirm) {
                     alert("비밀번호를 다시 입력해주세요.");
 
@@ -185,6 +188,8 @@
                 const formData = JSON.parse(JSON.stringify(this.$data));
 
                 // Unnecessary Field Remove
+                delete formData.localPart;
+                delete formData.domainPart;
                 delete formData.domainList;
                 delete formData.domainValue;
                 delete formData.pwError;
@@ -200,12 +205,14 @@
                 const result = registUser(formData);
 
                 result.then((response) => {
-                    if(response.data === 1) {
+                    console.log(response);
+                    
+                    if(response.status === '201') {
                         alert(`회원가입이 완료되었습니다.
                         등록한 이메일로 인증을 완료 후 사용 가능합니다.`);
 
                         this.$router.push({path: `/`});
-                    }else if (response.data === 2) {
+                    }else if (response.status === '409') {
                         alert(`이미 가입된 회원입니다.`);
                     }else {
                         alert(`회원가입에 실패하였습니다.

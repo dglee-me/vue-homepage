@@ -8,6 +8,7 @@ import Community from "@/pages/Community/CommunityPage";
 /* User */
 import Join from "@/pages/User/Join/JoinPage";
 import Login from "@/pages/User/Login/LoginPage";
+import Modify from "@/pages/User/Modify/ModifyPage";
 import Verify from "@/pages/User/Verify/UserVerify";
 
 /* Article View */
@@ -22,6 +23,7 @@ export default new VueRouter({
         { path: "/community", name: "Community", component: Community },
         { path: "/user/login", name: "Login", component: Login },
         { path: "/user/new", name: "Join", component: Join },
+        { path: "/user/modify", name: "Modify", component: Modify },
         { path: "/user/verify", name: "UserVerify", component: Verify, props: (route) => ({ token: route.query.token }) },
         { path: "/article", name: "Article", component: Article},
         { path: "*", name: "NotFoundComponent", component: NotFoundComponent }
